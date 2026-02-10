@@ -83,8 +83,18 @@ const RegistrationPage = () => {
                     </button>
                 </div>
                 <div className="relative">
-                  <input type="password" placeholder="Re-enter Password" className="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                  <button type="button" className="absolute right-3 top-2.5 text-gray-400">👁️</button>
+                  <input 
+                  ype={showPassword ? "text" : "password"}
+                  type="password" 
+                  placeholder="Re-enter Password"
+                   className="w-full px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-2.5 text-slate-500"
+                    >
+                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
                 </div>
                 
                 <button type="submit" className="w-full bg-[#2563EB] hover:bg-blue-700 text-white font-bold py-3 rounded-lg mt-6 shadow-md transition-all active:scale-[0.98]">
