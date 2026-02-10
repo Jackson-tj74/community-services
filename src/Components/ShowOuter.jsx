@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
-import { Footer } from "./Footer";
 import { NavigationBar } from "./Nav";
+import { Footer } from "./Footer ";
+
 
 export function SowOuter(){
     return (
@@ -9,6 +10,8 @@ export function SowOuter(){
             <NavigationBar/>
             <Outlet/>
             <Footer/>
+            
+            
         </div>
         </>
     )

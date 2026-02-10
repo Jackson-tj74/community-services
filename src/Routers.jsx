@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SowOuter } from './Components/ShowOuter';
 
 import { Register } from './Pages/Register';
+import { DashboardPage } from './Pages/DashBord';
 
 export function Routers() {
   return (
@@ -41,8 +42,12 @@ export function Routers() {
           path='authantication'
           element={<Authantication/>}
         />
+
          <Route path='register' element={<Register/>}/>
+         <Route path="dashboard"  element={<DashboardPage />}/>
       </Routes>
+      
+      
     </BrowserRouter>
   );
 }
