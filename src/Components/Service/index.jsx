@@ -1,7 +1,12 @@
+import ServicesPage from "./ServicesCards";
+import GlobalSearch from "../Home/GlobalSearch";
+
 export function Service(){
     return (
          <div>
-            <h1>Welcome to service</h1>
+            
+             <GlobalSearch />
+            <ServicesPage />
          </div>
     )
 }
