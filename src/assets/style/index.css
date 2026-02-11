@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 
 @theme {
@@ -8,8 +9,13 @@
 
 
     --padding-componentPadding:60px;
-    --paddind-mobilePadding:30px
+    --paddind-mobilePadding:30px;
     --color-dark-light-secondary: #7BB7FF;
     --color-sky-blue:#3b82f6;
     --color-hard-gray:#9CA3AF;
+    --color-soft-blue:#7BB7FF;
+    --color-small-soft-blue:#DBEAFE;
+    
 }
+
+
