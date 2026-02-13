@@ -1,7 +1,7 @@
 export function ProviderDashboardContent(){
     return (
         <>
-        <h1>welcome s provider pannel</h1>
+        <h1>welcome to provider pannel</h1>
         </>
     )
 }

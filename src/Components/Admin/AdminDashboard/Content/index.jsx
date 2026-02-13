@@ -1,7 +1,0 @@
-export function AdminDashboardContent(){
-    return (
-        <>
-        <h1>Welcome to admin pannel</h1>
-        </>
-    )
-}
