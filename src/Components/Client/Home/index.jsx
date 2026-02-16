@@ -1,7 +1,8 @@
 import { Statistic } from "./Statistic"
 import Hero from "./Hero";
 import Slide from "./Slide"
-import GlobalSearch from "../../__Share__/GlobalSearch";
+import GlobalSearch from "../../Shared/GlobalSearch";
+
 
 export function Home(){
     return (

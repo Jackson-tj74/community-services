@@ -1,15 +1,16 @@
 /** @format */
 
-import { HomePage } from './Pages/Client/Home';
 import Authentication from './Pages/Auth';
+import { HomePage } from './Pages/Client/Home';
 import { ServicePage } from './Pages/Client/Service';
 import { WorkGallery } from './Pages/Client/Gallery';
 import { ShowOuter } from './Components/Client/ShowOuter';
-import { DashboardClientPage } from './Pages/Client/DashboardClient';
+import { DashboardClientPage } from './Pages/Client/Dashboard';
 
+import ConfirmBookingPage from './Pages/Client/Booking';
+import { DashboardPage } from './Pages/Provider/Dashboard';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ProviderDashboardPage } from './Pages/Provider';
-import ConfirmBooking from './Components/Client/ClientDashboard/BookingConfirmation/ConfirmBooking';
+
 
 
 export function Routers() {
@@ -60,9 +61,10 @@ export function Routers() {
           path='resend-password'
           element={<Authentication/>}
         />
+
         <Route path="dashboard" element={<DashboardClientPage/>}/>
-        <Route path="provider-dashboard" element={<ProviderDashboardPage/>}/>
-        <Route path="/booking" element={<ConfirmBooking />} />
+        <Route path="/booking" element={<ConfirmBookingPage />} />
+        <Route path="provider-dashboard" element={<DashboardPage/>}/>
       </Routes>
     </BrowserRouter>
   );
