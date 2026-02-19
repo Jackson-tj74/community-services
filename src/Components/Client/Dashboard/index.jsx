@@ -1,63 +1,73 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import StatusCard from "./StatusCard";
 import Paragraphy from "../../Shared/Title";
 import ServicesStatics from "./ServicesStatics";
 import { ProfileSection } from "./ProfilSection";
 import DashboardNav from "../../Shared/DashboardNav";
-import Sidebar from "./Sidebar"; 
+import Sidebar from "../../Shared/Sidebar";
+import { ServiceTable } from "./ServiceTable";
 
 export function Dashboard() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="h-screen bg-universal overflow-hidden flex">
+    <div className="flex flex-col h-screen bg-universal overflow-hidden">
 
-      
-      <div
-        className={`fixed top-0 left-0 h-full z-40 
-        transition-all duration-300
-        `}
-      >
-        <Sidebar  />
-      </div>
+      <DashboardNav />
 
-      
-      <div className="flex-1 flex flex-col h-full">
+      <div className="flex flex-1 overflow-hidden relative">
 
-      
-        <div className="sticky top-0 z-20 bg-universal flex items-center px-4 h-16">
-         
-         
 
-          <DashboardNav />
+        {isExpanded && (
+          <div
+            className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity"
+            onClick={() => setIsExpanded(false)}
+          />
+        )}
+
+
+        <div className="fixed inset-y-0 left-0 z-50 xl:relative">
+          <Sidebar isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
         </div>
+
+
         <main
-          className={`flex-1 overflow-y-auto transition-all duration-300
-          ${isOpen ? "ml-64" : "ml-16"}`}
+          className={`
+            flex-1 overflow-y-auto  
+            transition-all duration-300 ease-in-out
+            ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */
+          `}
         >
-          <div className="w-full h-full p-4 md:p-8 space-y-8 ">
+          <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
 
+           <div className="px-6">
             <Paragraphy
-              highlight="Dashboard"
-              title="Overview"
-              description="Quick summary of key metrics, recent activities, and service performance"
+              highlight={"Dashboard"}
+              title={"Overview"}
+              description={"Quick summary of key metrics and activities"}
             />
+            </div>
 
-            <StatusCard />
+            <div className="container">
+              <section>
+                <StatusCard />
+              </section>
 
-           
-              <div className="lg:col-span-2">
+              <div className="xl:col-span-2">
                 <ServicesStatics />
               </div>
 
-              <div>
-                <ProfileSection />
+              <div className="flex flex-col lg:flex-row gap-8 justify-between px-[20px] md:px-componentPadding lg:px-12 items-center pb-10">
+                <div className="w-full lg:w-3/4">
+                  <ServiceTable />
+                </div>
+                <div className="w-full lg:w-[24%]">
+                  <ProfileSection />
+                </div>
               </div>
             </div>
-
-
+          </div>
         </main>
-
       </div>
     </div>
   );

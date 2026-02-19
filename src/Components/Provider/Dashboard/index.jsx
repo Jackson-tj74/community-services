@@ -1,7 +1,7 @@
-export function Dashboard(){
-    return (
-        <>
-        <h1>welcome to provider pannel</h1>
-        </>
-    )
+import React from "react";
+
+export function DashboardProvider(){
+  return(
+    <>DashboardProvider</>
+  )
 }
