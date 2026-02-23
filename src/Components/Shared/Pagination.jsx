@@ -14,8 +14,8 @@ const Pagination = () => {
   };
 
   return (
-    <div className=" flex justify-end">
-      <div className="flex items-center gap-4 bg-white p-4 rounded-2xl ">
+    <div className=" flex justify-end pr-1 md:pr-6">
+      <div className="flex items-center gap-4 bg-transparent p-4 rounded-2xl ">
         
         <button
           onClick={handlePrev}
@@ -26,12 +26,14 @@ const Pagination = () => {
           <FaChevronLeft />
         </button>
 
-        
         <div
-          className={`px-6 py-2 rounded-xl text-lg font-semibold transition ${
-            page > 1 ? "text-secondary" : "text-black"
-          }`}
-        >
+  className={`px-6 py-2 rounded-xl text-lg font-semibold border transition bg-secondary${
+    page > 1
+      ? "text-secondary border-gray-300"
+      : "text-black border-gray-300"
+  }`}
+>
+
           {page.toString().padStart(2, "0")}
         </div>
 

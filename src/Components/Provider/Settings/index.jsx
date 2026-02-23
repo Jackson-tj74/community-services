@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
-import SettingProfileSection from "./SettingProfileSection";
-import { SettingsPage } from "../../../Pages/Client/Setting";
 import SettingsCard from "./SettingCards";
+import SettingProfileSection from "./SettingProfileSection";
+
 
 
 export function SettingsProvider() {
@@ -40,16 +40,18 @@ export function SettingsProvider() {
         >
           <div className="max-w-[1600px] not-[]:mx-auto py-20 md:space-y-10 ">
             
-            <div className="">
+            <div className="px-4 lg:px-7">
           
             <Paragraphy 
               highlight={"Account Settings"} 
               description={"Quick Manage and update your personal account information settings"} 
 
             />
-            </div>
-            <SettingProfileSection />
+             </div>
+             <SettingProfileSection />
             <SettingsCard />
+           
+           
           </div>
         </main>
       </div>
