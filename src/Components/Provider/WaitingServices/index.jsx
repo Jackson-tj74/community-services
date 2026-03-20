@@ -12,7 +12,7 @@ export function WaitingSevicesProvider() {
 
   return (
     <div className='flex flex-col h-screen bg-universal overflow-hidden'>
-       <DashboardNav
+      <DashboardNav
         notificationNumber={2}
         notifications={[
           { id: 1,type: "success", title: "Booking Creacted", message: "Two clients booked services at",
@@ -26,7 +26,7 @@ export function WaitingSevicesProvider() {
         {isExpanded && (
           <div
             className='fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity'
-            onClick={() => setIsExpanded(false)}
+            onClick={() => setIsExpanded(true)}
           />
         )}
 

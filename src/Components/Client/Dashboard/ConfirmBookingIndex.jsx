@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import StatusCard from "./StatusCard";
-import Paragraphy from "../../Shared/Title";
-
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
-import { ServiceTable } from "./ServiceTable";
 import ConfirmBooking from "./ConfirmBooking";
 
 export function ConfirmBookingIndex() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
@@ -21,7 +17,7 @@ export function ConfirmBookingIndex() {
         {isExpanded && (
           <div
             className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity"
-            onClick={() => setIsExpanded(false)}
+            onClick={() => setIsExpanded(true)}
           />
         )}
 

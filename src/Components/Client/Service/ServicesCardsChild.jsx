@@ -3,16 +3,22 @@ import { MapPin, Phone, Clock, Star, Info, Banknote } from "lucide-react";
 import ServiceButton from "./ServiceButton";
 import { useNavigate } from "react-router-dom";
 
-function ServicesPageChild({ Img, title, ServiceName, description, place, phoneNumber, time, available, price }) {
-  const isAvailable = available === "Service Available";
+function ServicesPageChild({ Img, title, ServiceName, description, place, phoneNumber, time,to, available, price }) {
   const navigate = useNavigate();
+  const isAvailable = available === true;
+
 
   const handleBooking = () => {
     if (isAvailable) {
-     
-      navigate("/booking", { 
-        state: { title, price, Img, ServiceName, description, place, time, phoneNumber } 
-      });
+      const serviceData = { title, price, Img, ServiceName, description, place, time, phoneNumber };
+      sessionStorage.setItem("SELECTED-SERVICE", JSON.stringify(serviceData));
+      const isLoggedIn = sessionStorage.getItem("IS_LOGGED-IN");
+
+      if(isLoggedIn === true || isLoggedIn === "true"){
+        const slugTitle = title.toLowerCase().replace(/\s+/g, "-");
+        return navigate(`/confirm-booking/${slugTitle}`, { state: serviceData });
+      }
+      return navigate('/login');
     }
   };
 
@@ -60,11 +66,11 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
             </div>
             <div className="flex items-center gap-3">
               <Clock size={14} />
-              <span className="text-[11px]">{time}</span>
+              <span className="text-[11px]">{time} - {to}</span>
             </div>
             <div className="flex items-center gap-3 text-sm font-bold text-secondary pt-2">
               <Banknote size={18} />
-              <span>{price}</span>
+              <span>{price} Rwf</span>
             </div>
           </div>
 
@@ -84,7 +90,7 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
               <Info size={12} strokeWidth={3} />
             </div>
             <span className="text-[11px] font-bold">
-              {isAvailable ? "Service Available" : "Service Not Available"}
+              {isAvailable ? "  Available Service" : "UnAvailable Service"}
             </span>
           </div>
 

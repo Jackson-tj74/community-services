@@ -12,7 +12,7 @@ export function CompletedSevices() {
 
   return (
     <div className='flex flex-col h-screen bg-universal overflow-hidden'>
-    <DashboardNav
+      <DashboardNav
         notificationNumber={4}
         notifications={[
           { id: 1,type: "success", title: "Booking Confirmed", message: "Your service booking for has been confirmed car Wash for tommorrow at",
@@ -27,7 +27,7 @@ export function CompletedSevices() {
         {isExpanded && (
           <div
             className='fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity'
-            onClick={() => setIsExpanded(false)}
+            onClick={() => setIsExpanded(true)}
           />
         )}
 

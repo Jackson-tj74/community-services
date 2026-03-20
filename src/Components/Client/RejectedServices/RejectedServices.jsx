@@ -1,5 +1,6 @@
 import { Calendar } from "lucide-react";
 import Table from "../../Shared/Table";
+import Pagination from "../../Shared/Pagination";
 
 export function RejectedServices({ width }) {
 
@@ -57,7 +58,7 @@ export function RejectedServices({ width }) {
 
     
     const handleBook = (service) => {
-        console.log("Re-booking service:", service);
+       
 
         alert(`Booking ${service.name}`);
     };
@@ -70,7 +71,7 @@ export function RejectedServices({ width }) {
                 <img
                     src={value}
                     alt={row.name}
-                    className="w-12 h-12 sm:w-14 sm:h-16 rounded-lg object-cover"
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
                 />
             ),
         },
@@ -117,10 +118,10 @@ export function RejectedServices({ width }) {
                     <button
                         disabled={!isBookable}
                         onClick={() => handleBook(row)}
-                        className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-4 text-nowrap py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+                        className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-4 text-nowrap py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all${
                             isBookable
-                                ? "bg-primary border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary cursor-pointer"
-                                : "bg-gray-100 border-2 border-gray-300 text-gray-400 cursor-not-allowed"
+                            ? "bg-primary border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary cursor-pointer"
+                            : "bg-gray-100 border-2 border-gray-300 text-gray-400 cursor-not-allowed"
                         }`}
                     >
                         <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -132,13 +133,16 @@ export function RejectedServices({ width }) {
     ];
 
     return (
+        <>
         <div className="pr-12">
             <Table
                 columns={columns}
                 data={allServicesData}
                 width={width}
             />
+            <Pagination />
         </div>
+        </>
     );
 }
 

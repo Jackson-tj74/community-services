@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import StatusCard from "./StatusCard";
+import StatusCard from "../../Shared/StatusCard";
 import Paragraphy from "../../Shared/Title";
 import ServicesStatics from "../../Shared/ServicesStatics";
 import UrgentRequest from "./UrgentRequest";
@@ -7,7 +7,6 @@ import { ProfileSection } from "./ProfilSection";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
 import { ServiceTable } from "./ServiceTable";
-import { Info } from "lucide-react";
 
 
 export function Dashboard() {
@@ -16,7 +15,7 @@ export function Dashboard() {
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
 
-      <DashboardNav
+     <DashboardNav
         notificationNumber={4}
         notifications={[
           { id: 1,type: "success", title: "Booking Confirmed", message: "Your service booking for has been confirmed car Wash for tommorrow at",
@@ -30,38 +29,21 @@ export function Dashboard() {
       <div className="flex flex-1 overflow-hidden relative">
 
 
-        {isExpanded && (
-          <div
-            className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity"
-            onClick={() => setIsExpanded(false)}
-          />
-        )}
-
+        {isExpanded && ( <div className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity" onClick={() => setIsExpanded(true)} /> )}
 
         <div className="fixed inset-y-0 left-0 z-50 xl:relative">
           <Sidebar isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
         </div>
 
 
-        <main
-          className={`
-            flex-1 overflow-y-auto  
-            transition-all duration-300 ease-in-out
-            ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */
-          `}
-        >
+        <main className={` flex-1 overflow-y-auto transition-all duration-300 ease-in-out ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */ `} >
           <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
-
             <div className="px-14">
-              <Paragraphy
-                highlight={"Dashboard"}
-                title={"Overview"}
-                description={"Quick summary of key metrics and activities"}
-              />
+              <Paragraphy highlight={"Dashboard"} title={"Overview"} description={"Quick summary of key metrics and activities"} />
             </div>
 
-            <div className="container">
-              <section>
+            <div>
+              <section className="px-10 lg:px-10 sm:px-10">
                 <StatusCard />
               </section>
 

@@ -1,9 +1,42 @@
+/** @format */
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { APIsRequestService } from "../../Services/APIsRequestService";
+import ImageLeft from "../../Assets/images/paint.png";
 
-import ImageLeft from "../../assets/images/paint.png";
-const ResendPassword = () => {
+const ForgotPassword = () => {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await APIsRequestService.ForgotPasswordAPI({ email });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setLoading(false);
+        return toast.error(data.message || "wrong E-mail");
+      }
+
+      setIsSent(true);
+      toast.success(data.message || "Reset link sent! Check your email.");
+      setEmail("");
+    } catch (error) {
+      console.error(error);
+      toast.error( error);
+    
+    }
+  };
+
   return (
+
+
     <div className="relative w-full h-screen flex items-center justify-center ">
+      <ToastContainer />
       <div className="bg-primary w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden ">
         <div className="hidden md:flex justify-center py-6 bg-primary">
           <h2 className="text-2xl font-bold text-center">Community Service</h2>
@@ -31,15 +64,18 @@ const ResendPassword = () => {
                 Register
               </Link>
             </div>
-            <form className="flex flex-col gap-4">
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <input
                 type="email"
                 placeholder="Email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="border rounded-lg bg-universal border-primary px-4 py-3 my-4 focus:outline-secondary"
               />
 
               <p className="text-sm text-gray-500 my-2">
-                Already remember account?
+                Already remember account?{" "}
                 <Link
                   to="/login"
                   className="text-secondary cursor-pointer font-medium hover:underline"
@@ -47,8 +83,20 @@ const ResendPassword = () => {
                   Login
                 </Link>
               </p>
-              <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-3 transition-colors">
-               Resend Verify Email
+              <button
+                type="submit"
+                disabled={loading}
+                className={`bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-3 transition-colors ${loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+              >
+                {loading ? (
+                  "Sending..."
+                ) : isSent ? (
+                  "Resend Verify Email"
+                ) : (
+                  "Send Verify Email"
+                )}
+
               </button>
             </form>
           </div>
@@ -58,4 +106,6 @@ const ResendPassword = () => {
   );
 };
 
-export default ResendPassword;
+export default ForgotPassword;
+
+

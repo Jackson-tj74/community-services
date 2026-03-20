@@ -1,16 +1,47 @@
-# React + Vite
+# COMMUNITY SERVICE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Community Services is a web application designed to help people easily access and book services from different service providers with various skills.  
+The platform allows users to browse services, book what they need, and track the status of their service requests through a personal dashboard.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Service Flow
 
-## React Compiler
+1. A client creates an account using the sign-up form to gain access to booking services.
+2. The client navigates to the services page to choose the desired service.
+3. The client books the selected service by filling out a booking form.
+4. The client visits their dashboard to view the status of their booked services.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Technology Used
+- React (Vite)
+- Tailwind CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Programming Languages
+- JavaScript (ES6+)
+- CSS (Utility-first via Tailwind CSS)
+
+---
+
+## How to Run This Web Application
+
+Follow the steps below to run the project locally:
+
+### 1. Clone the repository
+```bash
+git clone <your-repository-url>
+
+```
+*  Install dependencies
+- ```  npm run install```
+
+* Run the development server
+- ``` npm run dev ```
+
+## Contributors
+- Gedeon Twizerimana
+- Michel Hategekimana
+- Jackson Tuyikunde
+- Alice Niyomufasha
+- Busoke Bonane
